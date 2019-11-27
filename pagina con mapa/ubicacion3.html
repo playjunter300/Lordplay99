@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Armas de caseria</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body onload="load()" onunload="GUnload()">
+
+    <header class="site-header">
+        <div class="contenedor contenido-header">
+            <div class="barra">
+                <div class="mobile-menu">
+                    <a href="#navegacion">
+                        <img src="img/barras.svg" alt="Icono Menu">
+                    </a>
+                </div>
+
+                <nav id="navegacion" class="navegacion">
+                    <a href="index.html">Inicio</a>
+                    <a href="anuncios.html">Anuncios</a>
+                    <a href="contacto.html">Contacto</a>
+                   <a href="ubicacion.html"><b>Ubicacion</b></a>
+                </nav>
+            </div>
+        </div> <!-- contenedor -->
+    </header>
+    <h1 align="center">Ubicaciones de la tienda de armas</h1>
+    <section class="paginas">
+<ul>
+<li><a href="ubicacion.html">Ubicacion 1</a></li>
+<li><a href="ubicacion2.html">Ubicacion 2</a></li>
+<li><a href="ubicacion3.html" class="active">Ubicacion 3</a></li>
+</ul>
+</section>
+   <center>
+     <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyDTNxYqrCxaifkZtkAXVALUVqxqljKP7xY"
+      type="text/javascript"></script>
+    <script type="text/javascript">
+
+    //<![CDATA[
+
+    function load() {
+      if (GBrowserIsCompatible()) {
+        var map = new GMap2(document.getElementById("map"));
+          //donde se tienen que cambiar los controles que al usuario le apareceran cuando se visualice;
+        map.addControl(new GMapTypeControl());//muestra mapa, satelite, e hibrido...
+        map.addControl(new GLargeMapControl());//controles de movimiento;
+        map.addControl(new GScaleControl());//añade controles de zoom;
+        map.addControl(new GOverviewMapControl());//añade una pequeña sobrevista;
+        
+        map.setCenter(new GLatLng(-19.435514, 48.603516), 18);// donde tengo que cambiar las cordenadas xd; latitud y longitud.
+        //el 5 indica el zoom inicial del mapa;
+
+      
+        map.setMapType(G_HYBRID_TYPE);
+            
+        function addtag(point, address) {
+        var marker = new GMarker(point);
+        GEvent.addListener(marker, "click", function() { marker.openInfoWindowHtml(address); } );
+        return marker;
+        }
+        
+        var point = new GLatLng(-19.000514,46.603516);
+        var address = '<b>Github</b><br/><i>Pagina de github</i><br /><a href="https://github.com/playjunter300/Lordplay99.git">Web de github</a>';
+        var marker = addtag(point, address);
+        
+        map.addOverlay(marker); 
+          
+      }
+    }
+
+    //]]>
+    </script>
+    <div id="map" align="center" style="width: 1000px; height: 750px"></div>
+</center>
+<br><br>
+
+    <footer class="site-footer seccion">
+        <div class="contenedor contenedor-footer">
+            <nav class="navegacion">
+                    <a href="index.html">Inicio</a>
+                    <a href="anuncios.html">Anuncios</a>
+                    <a href="contacto.html">Contacto</a>
+                    <a href="ubicacion.html"><b>Ubicacion</b></a>
+            </nav>
+            <p class="copyright">Todos los Derechos Reservados 2019 &copy; </p>
+        </div>
+    </footer>
+</body>
+</html>
